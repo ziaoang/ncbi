@@ -21,7 +21,7 @@ class PmcSpider(scrapy.Spider):
     def parse(self, response):
         query = response.url.split("=")[-1]
 
-        page_info = response.xpath('//h2[@class="result_count"]/text()').extract()[0]
+        page_info = response.xpath('//h3[@class="result_count left"]/text()').extract()[0]
         result_count = int(page_info.split(' ')[-1])
         page_count = (result_count - 1) / 100 + 1
 
