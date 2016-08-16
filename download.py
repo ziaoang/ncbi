@@ -5,7 +5,7 @@ user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36
 for line in open("url.txt"):
     query, title, url = line.strip().split('\t')
     title = title.replace(":", "")
-    folder_path = "pdf/%s" % query
+    folder_path = "pdf/need_to_rename"
     file_path = "%s/%s.pdf" % (folder_path, title)
     if url != 'NULL':
         if not os.path.exists(folder_path):
