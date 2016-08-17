@@ -17,6 +17,7 @@ NEWSPIDER_MODULE = 'ncbi.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ncbi (+http://www.yourdomain.com)'
+USER_AGENT = 'Browsershots'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
