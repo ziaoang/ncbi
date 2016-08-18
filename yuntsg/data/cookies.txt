@@ -1,0 +1,10 @@
+# HTTP Cookie File for domains related to yuntsg.com.
+# Downloaded with cookies.txt Chrome Extension (https://chrome.google.com/webstore/detail/njabckikapfpffapmjgojcnbfjonfjfg)
+# Example:  wget -x --load-cookies cookies.txt http://nc.yuntsg.com/find.do
+#
+www.yuntsg.com	FALSE	/	FALSE	0	JSESSIONID	6F90F973B139B3B9CAC3FEC33328B8B5
+nc.yuntsg.com	FALSE	/	FALSE	0	JSESSIONID	DB3112362D12B49D39F276A31BB18E72
+.yuntsg.com	TRUE	/	FALSE	1474126460	userinfo	&quot;RpIY/btnDCrh8TLMVW92oNZjTtDVlZ7ei9U8nBxiuUd6tpmMo22XLwkjqe5ueWs6ZJlkIlmcoZQwL5/EtGOuQUze6PA6ZT8Yo1Pf8TyLaVwJc9U0kHi7xML7csIaunai4TJvZHWm7aLhzEEJYpxRo7JaTrLUYe6QApjFRa4HO6Ki1KbgKkvlisdnExzn2lcLOICwZetG3/l5cM3tA6cH682cXYCo1gs9JQLEkls5V79JE9ORAEgkeHd2vOl3jbuY6debDGKImMrMYFnPvW6Ac5QuHTdPCIFSxi+v7UmqRefLEyXgTxC/082E4TOCMuHavERIg1N+Lhlyao9BsGzRFGJxHTwLcQ5VEcfjKrAf1YnHGxNjpEzuXQqYip3AA9qo9CHMImKzaPzplf3Jn3qh48qTRdJjbxxw6ss47nUbs64jMALZdXX198nm4Qdtuaaorc4zT30iUQaApi8Ln9AT/tqWPvyr1BD88OjW2IX/aYq/2PdS2bBIuTZ6VgLtSSE8S5zQr7jDgwy8xQOTBXWUjewwEvRWWlAgbK6mbeOcI2QdVCl67BnWRLmbrueAFExVfVW02SXQlT+sIHl3EWDI358kB4FffD/Cwh3giKUZsMKmIDQ9c0NjjnAoWyga0kqv+jiO3gw50Gs2g4ymPv8o26KelYdHI1ruiSNZPiY=&quot;
+nc.yuntsg.com	FALSE	/	FALSE	1503070460	11111	2222222
+.yuntsg.com	TRUE	/	FALSE	1503070460	Hm_lvt_48e434709779684c7bbbeb8f4c5387b1	1470935319,1471451193,1471454510,1471533744
+.yuntsg.com	TRUE	/	FALSE	0	Hm_lpvt_48e434709779684c7bbbeb8f4c5387b1	1471534461
