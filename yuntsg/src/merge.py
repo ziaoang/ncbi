@@ -1,13 +1,15 @@
+import os
+
 history = {}
 
-sf = open("src/all_retrieval.txt", "r")
-for line in sf:
-    query, pmid, title = line.strip().split('\t')
-    if query not in history:
-        history[query] = set()
-    history[query].add(pmid)
-sf.close()
-
+if os.path.exists("src/all_retrieval.txt"):
+    sf = open("src/all_retrieval.txt", "r")
+    for line in sf:
+        query, pmid, title = line.strip().split('\t')
+        if query not in history:
+            history[query] = set()
+        history[query].add(pmid)
+    sf.close()
 
 cnt = 0
 df = open("src/all_retrieval.txt", "a")
