@@ -35,6 +35,7 @@ class ListSpider(scrapy.Spider):
 
         for pmid in todo_set - have_set:
             self.start_urls.append("http://nc.yuntsg.com/paddjsonp.do?pmid=%s" % pmid)
+            break
 
     def start_requests(self):
         for url in self.start_urls:

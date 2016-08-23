@@ -13,15 +13,12 @@ class RetrievalSpider(scrapy.Spider):
     name = "retrieval"
     start_urls = []
     cookies = {}
-    query = ""
 
     def __init__(self):
         self.clear()
         self.load_cookies()
         for line in open("data/query.txt"):
-            self.query = line.strip().replace(" ", "+")
-            self.start_urls.append("http://nc.yuntsg.com/presultjsonp.do?q=%s&page=1" % self.query)
-            break
+            self.start_urls.append("http://nc.yuntsg.com/presultjsonp.do?q=%s&page=1" % line.strip())
 
     def start_requests(self):
         for url in self.start_urls:
@@ -30,10 +27,11 @@ class RetrievalSpider(scrapy.Spider):
     def parse(self, response):
         t = json.loads(response.body[5:-1])
         self.json_handle(t)
+        query = t["key"]
         allpage = int(t["allpage"])
         if allpage > 1:
             for page in range(2, allpage + 1):
-                url = "http://nc.yuntsg.com/presultjsonp.do?q=%s&page=%d" % (self.query, page)
+                url = "http://nc.yuntsg.com/presultjsonp.do?q=%s&page=%d" % (query, page)
                 yield Request(url=url, cookies=self.cookies, callback=self.next_parse)
 
     def next_parse(self, response):
@@ -41,8 +39,9 @@ class RetrievalSpider(scrapy.Spider):
         self.json_handle(t)
 
     def json_handle(self, t):
+        query = t["key"]
         for paper in t["info"]:
-            self.save("%s\t%s\t%s" % (self.query, paper['pmid'], paper['title']))
+            self.save("%s\t%s\t%s" % (query, paper['pmid'], paper['title']))
 
     def load_cookies(self):
         for line in open("data/cookies.txt"):
