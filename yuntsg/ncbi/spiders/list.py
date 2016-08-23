@@ -39,9 +39,9 @@ class ApplySpider(scrapy.Spider):
     def json_handle(self, t):
         for paper in t["res"]:
             if len(paper['filepath']) == 0:
-                self.save("%s\t%s\t%s" % (paper['pmid'], paper['ti'], 'NULL'))
+                self.save("%s\t%s" % (paper['pmid'], 'NULL'))
             else:
-                self.save("%s\t%s\t%s" % (paper['pmid'], paper['ti'], paper['filepath'][0]))
+                self.save("%s\t%s" % (paper['pmid'], paper['filepath'][0]))
 
     def load_cookies(self):
         for line in open("data/cookies.txt"):

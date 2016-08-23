@@ -17,6 +17,11 @@ class ListSpider(scrapy.Spider):
     def __init__(self):
         self.load_cookies()
 
+        free_set = set()
+        for line in open("src/free2.txt"):
+            t = line.strip().split('\t')
+            free_set.add(t[0])
+
         have_set = set()
         for line in open("src/list.txt"):
             t = line.strip().split('\t')
@@ -30,12 +35,12 @@ class ListSpider(scrapy.Spider):
         print '-' * 20
         print 'retrieval %d papers' % len(todo_set)
         print 'have %d papers' % len(have_set)
-        print 'apply %d papers' % len(todo_set - have_set)
+        print 'free %d papers' % len(free_set)
+        print 'apply %d papers' % len(todo_set - have_set - free_set)
         print '-' * 20
 
-        for pmid in todo_set - have_set:
+        for pmid in todo_set - have_set - free_set:
             self.start_urls.append("http://nc.yuntsg.com/paddjsonp.do?pmid=%s" % pmid)
-            break
 
     def start_requests(self):
         for url in self.start_urls:
