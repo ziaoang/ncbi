@@ -14,6 +14,8 @@ BOT_NAME = 'ncbi'
 SPIDER_MODULES = ['ncbi.spiders']
 NEWSPIDER_MODULE = 'ncbi.spiders'
 
+RETRY_HTTP_CODES = [404]
+RETRY_TIMES = 10
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ncbi (+http://www.yourdomain.com)'

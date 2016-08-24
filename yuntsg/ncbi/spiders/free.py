@@ -5,8 +5,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-class Free1Spider(scrapy.Spider):
-    name = "free1"
+class FreeSpider(scrapy.Spider):
+    name = "free"
     start_urls = []
 
     def __init__(self):
@@ -25,18 +25,24 @@ class Free1Spider(scrapy.Spider):
            self.start_urls.append("http://www.ncbi.nlm.nih.gov/pubmed/%s" % pmid)
 
     def parse(self, response):
-        pmc_info = response.xpath('//a[@class="status_icon"]/@href').extract()
-        if len(pmc_info) == 1:
-            pmid = response.url.split('/')[-1]
-            self.save(pmid)
+        out = []
+        pmid = response.url.split('/')[-1]
+        out.append(pmid)
+        links = response.xpath('//div[@class="icons portlet"]/a')
+        for link in links:
+            way = link.xpath('./img/@alt').extract()[0].replace("Icon for ", "")
+            url = link.xpath('./@href').extract()[0]
+            out.append(way)
+            out.append(url)
+        self.save('\t'.join(out))
 
     def save(self, line):
-        df = open("src/free1.txt", "a")
+        df = open("src/free.txt", "a")
         df.write("%s\n" % line)
         df.close()
 
     def clear(self):
-        df = open("src/free1.txt", "w")
+        df = open("src/free.txt", "w")
         df.close()
 
 
