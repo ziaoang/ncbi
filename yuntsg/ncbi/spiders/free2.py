@@ -4,6 +4,7 @@ from scrapy.http import Request
 
 import re
 import json
+import random
 
 import sys
 reload(sys)
@@ -29,8 +30,10 @@ class Free2Spider(scrapy.Spider):
         print "try %d papers" % len(todo_set - have_set)
         print '-' * 20
         
-        for pmid in todo_set - have_set:
-          self.start_urls.append("http://www.ncbi.nlm.nih.gov/pubmed/%s" % pmid)
+        tmp = list(todo_set - have_set)
+        random.shuffle(tmp)
+        for pmid in tmp:
+            self.start_urls.append("http://www.ncbi.nlm.nih.gov/pubmed/%s" % pmid)
 
     def parse(self, response):
         pmc_info = response.xpath('//a[@class="status_icon"]/@href').extract()
