@@ -18,9 +18,14 @@ class ListSpider(scrapy.Spider):
         self.load_cookies()
 
         free_set = set()
-        for line in open("src/free2.txt"):
+        for line in open("src/free_pmc.txt"):
             t = line.strip().split('\t')
-            free_set.add(t[0])
+            if t[1] != 'NULL':
+                free_set.add(t[0])
+        for line in open("src/free_sp.txt"):
+            t = line.strip().split('\t')
+            if t[1] != 'NULL':
+                free_set.add(t[0])
 
         have_set = set()
         for line in open("src/list.txt"):
