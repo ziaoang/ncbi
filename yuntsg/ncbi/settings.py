@@ -15,12 +15,12 @@ SPIDER_MODULES = ['ncbi.spiders']
 NEWSPIDER_MODULE = 'ncbi.spiders'
 
 RETRY_HTTP_CODES = [404]
-RETRY_TIMES = 10
+RETRY_TIMES = 3
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ncbi (+http://www.yourdomain.com)'
-USER_AGENT = 'Browsershots'
-# USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+#USER_AGENT = 'Browsershots'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
