@@ -43,11 +43,13 @@ for pmid in pmid_pdf:
     url = pmid_pdf[pmid]
     file_path = "%s/%s.pdf" % (folder_path, pmid)
     # order = "wget --tries=20 -c -P '%s' -U '%s' '%s' -O '%s'" % (folder_path, user_agent, url, file_path) # -c means continue for broken files
-    order = "wget -P '%s' -U '%s' '%s' -O '%s'" % (folder_path, user_agent, url, file_path) # -c means continue for broken files
+    order = "wget -P '%s' -U '%s' '%s' -O '%s'" % (folder_path, user_agent, url.replace(r"'", r"%27"), file_path)
+    print order
     os.system(order)
 
 print '-' * 20
 print "download %d papers" % len(pmid_pdf)
 print '-' * 20
+
 
 
