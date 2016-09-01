@@ -6,29 +6,29 @@ def clean(text):
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-index = 0
-query_index = {}
-for line in open("data/query.txt"):
-    index += 1
-    query = line.strip()
-    query_index[query] = index
-
-    if not os.path.exists("pdf/pack/%d" % index):
-        os.makedirs("pdf/pack/%d" % index)
-
-cnt = 0
+index = {}
 for line in open("data/retrieval.txt"):
     query, pmid, title = line.strip().split('\t')
-    index = query_index[query]
-    title = pmid + ' - ' + clean(title)[:64]
-    if os.path.exists("pdf/merge/%s.pdf" % pmid) and not os.path.exists("pdf/pack/%d/%s.pdf" % (index, title)):
+    index[pmid] = pmid + ' - ' + clean(title)[:64]
+
+for i in range(10):
+    if not os.path.exists("pdf/pack_%d" % i):
+        os.system("mkdir pdf/pack_%d" % i)
+
+cnt = 0
+for pmid in index:
+    filename = index[pmid]
+    if os.path.exists("pdf/merge/%s.pdf" % pmid):
         cnt += 1
-        order = "cp 'pdf/merge/%s.pdf' 'pdf/pack/%d/%s.pdf'" % (pmid, index, title)
+        order = "cp 'pdf/merge/%s.pdf' 'pdf/pack_%d/%s.pdf'" % (pmid, int(pmid) % 10, filename)
+        os.system(order)
+    elif os.path.exists("pdf/manual/%s.pdf" % pmid):
+        cnt += 1
+        order = "cp 'pdf/manual/%s.pdf' 'pdf/pack_%d/%s.pdf'" % (pmid, int(pmid) % 10, filename)
         os.system(order)
 
 print '-' * 20
 print 'pack %d papers' % cnt
 print '-' * 20
-
 
 
